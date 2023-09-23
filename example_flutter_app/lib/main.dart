@@ -150,6 +150,7 @@ class MyHomePageState extends State<MyHomePage> {
 }
 
 class MainPage extends StatelessWidget {
+  //MainPage{()}; im constructor müsst ich function mitgeben
   @override
   Widget build(BuildContext context) {
     return Scaffold(
