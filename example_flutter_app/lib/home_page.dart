@@ -1,3 +1,4 @@
+import 'package:example_flutter_app/current_page.dart';
 import 'package:flutter/material.dart';
 import 'accelerometer.dart';
 import 'camera.dart';
@@ -8,8 +9,6 @@ import 'gps_data.dart';
 import 'retrieve_data.dart';
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,45 +20,51 @@ class MyHomePage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             ElevatedButton(
-              child: const Text('NewPage1'),
+              child: const Text('Accelerometer'),
               onPressed: () {
+                CurrentPage.setPage('Accelerometer');
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => NewPage1()));
+                    MaterialPageRoute(builder: (context) => Accelerometer()));
               },
             ),
             ElevatedButton(
-              child: const Text('NewPage2'),
+              child: const Text('Camera'),
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => NewPage2()));
+                CurrentPage.setPage('Camera');
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Camera()));
               },
             ),
             ElevatedButton(
-              child: const Text('NewPage3'),
+              child: const Text('Contacts'),
               onPressed: () {
+                CurrentPage.setPage('Contacts');
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => NewPage3()));
+                    MaterialPageRoute(builder: (context) => Contacts()));
               },
             ),
             ElevatedButton(
-              child: const Text('NewPage4'),
+              child: const Text('FileAccess'),
               onPressed: () {
+                CurrentPage.setPage('FileAccess');
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => NewPage4()));
+                    MaterialPageRoute(builder: (context) => FileAccess()));
               },
             ),
             ElevatedButton(
-              child: const Text('NewPage5'),
+              child: const Text('GpsData'),
               onPressed: () {
+                CurrentPage.setPage('GpsData');
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => NewPage5()));
+                    MaterialPageRoute(builder: (context) => GpsData()));
               },
             ),
             ElevatedButton(
-              child: const Text('NewPage6'),
+              child: const Text('RetrieveData'),
               onPressed: () {
+                CurrentPage.setPage('RetrieveData');
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => NewPage6()));
+                    MaterialPageRoute(builder: (context) => RetrieveData()));
               },
             ),
           ],

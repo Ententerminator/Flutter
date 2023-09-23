@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'appbar.dart';
 import 'drawer.dart';
 
-class NewPage4 extends StatelessWidget {
+class FileAccess extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

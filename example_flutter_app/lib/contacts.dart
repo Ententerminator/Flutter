@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'appbar.dart';
 import 'drawer.dart';
 
-class NewPage3 extends StatelessWidget {
+class Contacts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

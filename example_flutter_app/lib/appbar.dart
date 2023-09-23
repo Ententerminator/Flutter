@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'current_page.dart';
 import 'home_page.dart';
 
 class MyAppbar extends StatelessWidget implements PreferredSizeWidget {
-  const MyAppbar({super.key});
-
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
@@ -15,8 +14,9 @@ class MyAppbar extends StatelessWidget implements PreferredSizeWidget {
         icon: const BackButtonIcon(),
         tooltip: 'Back Button',
         onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const MyHomePage()));
+          CurrentPage.setPage('MyHomePage');
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => MyHomePage()));
         },
       ),
     );

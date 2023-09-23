@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'accelerometer.dart';
 import 'camera.dart';
 import 'contacts.dart';
+import 'current_page.dart';
 import 'file_access.dart';
 import 'gps_data.dart';
 import 'home_page.dart';
@@ -25,57 +26,64 @@ class MyDrawer extends StatelessWidget {
             title: const Text('MyHomePage'),
             selected: runtimeType.toString() == 'MyHomePage',
             onTap: () {
+              CurrentPage.setPage('MyHomePage');
               Navigator.pop(context);
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const MyHomePage()));
+                  MaterialPageRoute(builder: (context) => MyHomePage()));
             },
           ),
           ListTile(
-            title: const Text('NewPage1'),
+            title: const Text('Accelerometer'),
             onTap: () {
+              CurrentPage.setPage('Accelerometer');
               Navigator.pop(context);
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => NewPage1()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Accelerometer()));
             },
           ),
           ListTile(
-            title: const Text('NewPage2'),
+            title: const Text('Camera'),
             onTap: () {
+              CurrentPage.setPage('Camera');
               Navigator.pop(context);
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => NewPage2()));
+                  context, MaterialPageRoute(builder: (context) => Camera()));
             },
           ),
           ListTile(
-            title: const Text('NewPage3'),
+            title: const Text('Contacts'),
             onTap: () {
+              CurrentPage.setPage('Contacts');
               Navigator.pop(context);
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => NewPage3()));
+                  context, MaterialPageRoute(builder: (context) => Contacts()));
             },
           ),
           ListTile(
-            title: const Text('NewPage4'),
+            title: const Text('FileAccess'),
             onTap: () {
+              CurrentPage.setPage('FileAccess');
               Navigator.pop(context);
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => NewPage4()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => FileAccess()));
             },
           ),
           ListTile(
-            title: const Text('NewPage5'),
+            title: const Text('GpsData'),
             onTap: () {
+              CurrentPage.setPage('GpsData');
               Navigator.pop(context);
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => NewPage5()));
+                  context, MaterialPageRoute(builder: (context) => GpsData()));
             },
           ),
           ListTile(
-            title: const Text('NewPage6'),
+            title: const Text('RetrieveData'),
             onTap: () {
+              CurrentPage.setPage('RetrieveData');
               Navigator.pop(context);
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => NewPage6()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => RetrieveData()));
             },
           ),
         ],

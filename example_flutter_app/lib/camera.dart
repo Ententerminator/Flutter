@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'appbar.dart';
 import 'drawer.dart';
 
-class NewPage2 extends StatelessWidget {
+class Camera extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
