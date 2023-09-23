@@ -13,6 +13,8 @@ class CurrentPage {
     // obtain shared preferences
     final prefs = await SharedPreferences.getInstance();
     //debugPrint(prefs.getString('currentSite'));
+    print(prefs.getString('currentSite'));
+
     // get value
     return prefs.getString('currentSite') ?? 'null';
   }
