@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 
@@ -11,10 +13,11 @@ class Accelerometer extends StatefulWidget {
 
 class _AccelerometerState extends State<Accelerometer> {
   double x = 0, y = 0, z = 0;
+  late StreamSubscription<UserAccelerometerEvent> subscription;
 
   @override
   void initState() {
-    userAccelerometerEvents.listen(
+    subscription = userAccelerometerEvents.listen(
       (UserAccelerometerEvent event) {
         print(event);
         x = event.x;
@@ -31,6 +34,12 @@ class _AccelerometerState extends State<Accelerometer> {
     );
     // [AccelerometerEvent (x: 0.0, y: 9.8, z: 0.0)]
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    subscription.cancel();
   }
 
   @override
