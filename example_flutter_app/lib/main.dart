@@ -25,11 +25,19 @@ class SavedPage extends StatefulWidget {
   State<SavedPage> createState() => SavedPageState();
 }
 
-class SavedPageState extends State<SavedPage> {
+class SavedPageState extends State<SavedPage> with WidgetsBindingObserver{
+  AppLifecycleState? appLifecycleState;
   @override
   void initState() {
     super.initState();
     lastPage();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
   }
 
   String page = 'cool';
@@ -40,7 +48,21 @@ class SavedPageState extends State<SavedPage> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    switch (state) {
+      case AppLifecycleState.resumed:
+        print(appLifecycleState);
+        print(state);
+        print('welcome back');
+        appLifecycleState = state;
+        setState(() {});
+        break;
+      default:
+        break;
+    }
+  }
+
+  Widget navigateToPage() {
     switch (page) {
       case 'Accelerometer':
         return Accelerometer();
@@ -57,5 +79,12 @@ class SavedPageState extends State<SavedPage> {
       default:
         return MyHomePage();
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return (appLifecycleState == AppLifecycleState.resumed)
+    ? Scaffold(body: Center(child: Text('Welcome Back')),)
+    :navigateToPage();
   }
 }
