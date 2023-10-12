@@ -52,22 +52,33 @@ class _RetrieveDataState extends State<RetrieveData> {
     futureAlbum = fetchAlbum();
   }
 
+  Future<void> refreshData() async{
+    futureAlbum = fetchAlbum();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppbar(),
-      body: Center(
-        child: FutureBuilder<Album>(
-          future: futureAlbum,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return Image.network(snapshot.data!.message);
-            } else if (snapshot.hasError) {
-              return Text("${snapshot.error}");
-            }
-            return CircularProgressIndicator();
-          },
-        ),
+      body: RefreshIndicator(
+        onRefresh: refreshData,
+        child: Center(
+          child: SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: FutureBuilder<Album>(
+              future: futureAlbum,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Image.network(snapshot.data!.message);
+                } else if (snapshot.hasError) {
+                  return Text("${snapshot.error}");
+                }
+                return CircularProgressIndicator();
+              },
+            ),
+          ),
+        )
       ),
       endDrawer: MyDrawer(),
     );
