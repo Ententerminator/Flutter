@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'current_page.dart';
 import 'home_page.dart';
 
@@ -14,6 +15,7 @@ class MyAppbar extends StatelessWidget implements PreferredSizeWidget {
         icon: const BackButtonIcon(),
         tooltip: 'Back Button',
         onPressed: () {
+          HapticFeedback.vibrate();
           CurrentPage.setPage('MyHomePage');
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => MyHomePage()));

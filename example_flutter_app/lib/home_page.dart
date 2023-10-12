@@ -1,5 +1,6 @@
 import 'package:example_flutter_app/current_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'accelerometer.dart';
 import 'camera.dart';
 import 'contacts.dart';
@@ -22,6 +23,7 @@ class MyHomePage extends StatelessWidget {
             ElevatedButton(
               child: const Text('Accelerometer'),
               onPressed: () {
+                HapticFeedback.vibrate();
                 CurrentPage.setPage('Accelerometer');
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => Accelerometer()));
@@ -30,6 +32,7 @@ class MyHomePage extends StatelessWidget {
             ElevatedButton(
               child: const Text('Camera'),
               onPressed: () {
+                HapticFeedback.vibrate();
                 CurrentPage.setPage('Camera');
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => Camera()));
@@ -38,6 +41,7 @@ class MyHomePage extends StatelessWidget {
             ElevatedButton(
               child: const Text('Contacts'),
               onPressed: () {
+                HapticFeedback.vibrate();
                 CurrentPage.setPage('Contacts');
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => Contacts()));
@@ -46,6 +50,7 @@ class MyHomePage extends StatelessWidget {
             ElevatedButton(
               child: const Text('FileAccess'),
               onPressed: () {
+                HapticFeedback.vibrate();
                 CurrentPage.setPage('FileAccess');
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => FileAccess()));
@@ -54,6 +59,7 @@ class MyHomePage extends StatelessWidget {
             ElevatedButton(
               child: const Text('GpsData'),
               onPressed: () {
+                HapticFeedback.vibrate();
                 CurrentPage.setPage('GpsData');
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => GpsData()));
@@ -62,6 +68,7 @@ class MyHomePage extends StatelessWidget {
             ElevatedButton(
               child: const Text('RetrieveData'),
               onPressed: () {
+                HapticFeedback.vibrate();
                 CurrentPage.setPage('RetrieveData');
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => RetrieveData()));
