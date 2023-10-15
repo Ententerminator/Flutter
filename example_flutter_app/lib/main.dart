@@ -49,20 +49,18 @@ class SavedPageState extends State<SavedPage> with WidgetsBindingObserver{
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    switch (state) {
-      case AppLifecycleState.resumed:
-        print(appLifecycleState);
-        print(state);
-        print('welcome back');
-        appLifecycleState = state;
-        setState(() {});
-        break;
-      default:
-        break;
+    if (state == AppLifecycleState.resumed) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: const Text('Welcome Back'),
+            duration: const Duration(milliseconds: 1500)
+          ),
+        );
     }
   }
 
-  Widget navigateToPage() {
+  @override
+  Widget build(BuildContext context) { 
     switch (page) {
       case 'Accelerometer':
         return Accelerometer();
@@ -79,12 +77,5 @@ class SavedPageState extends State<SavedPage> with WidgetsBindingObserver{
       default:
         return MyHomePage();
     }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return (appLifecycleState == AppLifecycleState.resumed)
-    ? Scaffold(body: Center(child: Text('Welcome Back')),)
-    :navigateToPage();
   }
 }
