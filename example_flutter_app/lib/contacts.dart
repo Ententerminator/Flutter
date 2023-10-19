@@ -43,7 +43,7 @@ class _ContactsState extends State<Contacts> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppbar(),
+      appBar: MyAppbar('Contacts'),
       body: Center(
         child: Column( 
           children:[

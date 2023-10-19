@@ -16,6 +16,7 @@ class MyDrawer extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
+          //TODO: entfernen, aber genug platz trotzdem lassen (wie in react native?)
           DrawerHeader(
             decoration: BoxDecoration(
               color: Colors.blue,

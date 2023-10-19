@@ -9,73 +9,75 @@ import 'file_access.dart';
 import 'gps_data.dart';
 import 'retrieve_data.dart';
 
+//entweder 3 rows 1 column
+//oder buttons padding rundherum geben
+
+class HomepageButton extends StatelessWidget{
+  String text;
+  Widget page;
+  HomepageButton( this.text, this.page);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      child: Text(
+        this.text,
+        style: TextStyle(fontSize: 18),),
+      onPressed: () {
+        HapticFeedback.vibrate();
+        CurrentPage.setPage(this.text);
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => this.page));
+      },
+      style: ElevatedButton.styleFrom(
+        minimumSize: Size(150, 90),
+        //padding: EdgeInsets.symmetric(vertical: 100)
+      )
+    );
+  }
+}
+
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text('Example App Flutter'),
+        title: const Text('Homepage'),
+        centerTitle: true,
       ),
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            ElevatedButton(
-              child: const Text('Accelerometer'),
-              onPressed: () {
-                HapticFeedback.vibrate();
-                CurrentPage.setPage('Accelerometer');
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Accelerometer()));
-              },
-            ),
-            ElevatedButton(
-              child: const Text('Camera'),
-              onPressed: () {
-                HapticFeedback.vibrate();
-                CurrentPage.setPage('Camera');
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Camera()));
-              },
-            ),
-            ElevatedButton(
-              child: const Text('Contacts'),
-              onPressed: () {
-                HapticFeedback.vibrate();
-                CurrentPage.setPage('Contacts');
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Contacts()));
-              },
-            ),
-            ElevatedButton(
-              child: const Text('FileAccess'),
-              onPressed: () {
-                HapticFeedback.vibrate();
-                CurrentPage.setPage('FileAccess');
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => FileAccess()));
-              },
-            ),
-            ElevatedButton(
-              child: const Text('GpsData'),
-              onPressed: () {
-                HapticFeedback.vibrate();
-                CurrentPage.setPage('GpsData');
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => GpsData()));
-              },
-            ),
-            ElevatedButton(
-              child: const Text('RetrieveData'),
-              onPressed: () {
-                HapticFeedback.vibrate();
-                CurrentPage.setPage('RetrieveData');
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => RetrieveData()));
-              },
-            ),
-          ],
-        ),
+      body: Column(
+        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          SizedBox( height: 30,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            
+            children: <Widget>[
+              HomepageButton('Accelerometer', Accelerometer()),
+              HomepageButton('Camera', Camera()),
+              //Padding(padding: EdgeInsets.fromLTRB(20, 120, 20, 0))
+              
+            ],
+          ),
+          SizedBox( height: 30,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              HomepageButton('Contacts', Contacts()),
+              HomepageButton('FileAccess', FileAccess()),
+              //Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 0))
+            ],
+          ),
+          SizedBox( height: 30,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              HomepageButton('GpsData', GpsData()),
+              HomepageButton('RetrieveData', RetrieveData()),
+            ],
+          ),
+        ],
       ),
       endDrawer: MyDrawer(),
     );

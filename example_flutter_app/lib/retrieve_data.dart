@@ -60,7 +60,7 @@ class _RetrieveDataState extends State<RetrieveData> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppbar(),
+      appBar: MyAppbar('RetrieveData'),
       body: RefreshIndicator(
         onRefresh: refreshData,
         child: Center(

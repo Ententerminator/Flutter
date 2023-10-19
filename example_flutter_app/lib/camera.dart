@@ -59,7 +59,7 @@ class _CameraState extends State<Camera> {
   Widget build(BuildContext context) {
     return cameraAvailable
         ? Scaffold(
-          appBar: MyAppbar(),
+          appBar: MyAppbar('Camera'),
           body: CameraPreview(_controller),
           floatingActionButton: FloatingActionButton(
             onPressed: () async {
@@ -84,7 +84,7 @@ class _CameraState extends State<Camera> {
           endDrawer: MyDrawer(),
         )
         : Scaffold(
-          appBar: MyAppbar(),
+          appBar: MyAppbar('Camera'),
           body: Center(child: CircularProgressIndicator()),
           endDrawer: MyDrawer(),
         );

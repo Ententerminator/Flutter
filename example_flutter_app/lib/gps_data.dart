@@ -80,7 +80,7 @@ class _GpsDataState extends State<GpsData> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppbar(),
+      appBar: MyAppbar('GpsData'),
       body: Center(
         child: Column(children: [
           //prettify: long/lat in eigene column, damits nicht flackert

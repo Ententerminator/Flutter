@@ -63,7 +63,7 @@ class _FileAccessState extends State<FileAccess> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppbar(),
+      appBar: MyAppbar('FileAccess'),
       body: Center(
         child: Column(
           children: [

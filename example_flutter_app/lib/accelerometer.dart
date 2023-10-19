@@ -45,7 +45,7 @@ class _AccelerometerState extends State<Accelerometer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppbar(),
+      appBar: MyAppbar('Accelerometer'),
       body: Center(
         child: Column(children: [
           //prettify: x is in eigene column, damits nicht flackert
