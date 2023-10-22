@@ -18,6 +18,17 @@ class MyApp extends StatelessWidget {
       home: SavedPage(),
       theme: ThemeData(
         fontFamily: 'Times New Roman',
+        textTheme: TextTheme(
+          //for the drawer
+          bodyLarge: TextStyle(
+            fontSize: 15,
+            fontFamily: 'Arial'
+        )),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+            minimumSize: MaterialStateProperty.all(Size(250, 60))
+          )
+        ),
         //navigationDrawerTheme: NavigationDrawerThemeData( labelTextStyle: ),
         primaryColor: Color.fromARGB(255, 0, 80, 255),
         scaffoldBackgroundColor: Color.fromARGB(255, 238, 238, 238),

@@ -17,16 +17,11 @@ class _FileAccessState extends State<FileAccess> {
   final _controller = TextEditingController();
   String fileName = '';
 
-
-
-
     Future<void> _saveFile() async {
     final String? downloadsDir = (await getDownloadsDirectory())?.path;
 
-    //print(downloadsDir);
     fileName = _controller.text;
     final fileDownload = File('$downloadsDir/$fileName.txt');
-
 
     await fileDownload.writeAsString('hey ho was geht yo');
   }
@@ -67,25 +62,47 @@ class _FileAccessState extends State<FileAccess> {
       body: Center(
         child: Column(
           children: [
-              TextField(
+            SizedBox( height: 20),
+            SizedBox(
+              width: 250,
+              height: 60,
+              child: TextField(
                 controller: _controller,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Enter Filename',
+                ),
+                style: TextStyle(
+                  fontSize: 18
+                ),
+              )
+            ),
+            SizedBox( height: 20),
+            ElevatedButton( 
+              onPressed: () async { 
+                await _saveFile(); 
+              }, 
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size(250, 60),
               ),
-              ElevatedButton( 
-                onPressed: () async { 
-                  await _saveFile(); 
-                }, 
-                child: Text( 
+              child: Text(
                   'Make File with Filename', 
+                  style: TextStyle(fontSize: 18),
                 ),
               ),
-              ElevatedButton( 
-                onPressed: () { 
-                  _pickFile(); 
-                }, 
-                child: Text( 
-                  'Pick and open file', 
-                ),
+            SizedBox( height: 20),
+            ElevatedButton( 
+              onPressed: () { 
+                _pickFile(); 
+              },
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size(250, 60),
               ),
+              child: Text( 
+                'Pick and open file', 
+                style: TextStyle(fontSize: 18),
+              ),
+            ),
           ]
         )
       ),
