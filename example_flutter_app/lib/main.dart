@@ -17,10 +17,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: SavedPage(),
       theme: ThemeData(
+        fontFamily: 'Times New Roman',
+        //navigationDrawerTheme: NavigationDrawerThemeData( labelTextStyle: ),
+        primaryColor: Color.fromARGB(255, 0, 80, 255),
         scaffoldBackgroundColor: Color.fromARGB(255, 238, 238, 238),
         colorScheme: ColorScheme.fromSeed(
           seedColor: Color.fromARGB(0, 0, 0, 0),
           primary: Color.fromARGB(255, 0, 80, 255),
+          secondary: Color.fromARGB(50, 0, 81, 255)
         )
       )
     );
@@ -59,8 +63,15 @@ class SavedPageState extends State<SavedPage> with WidgetsBindingObserver{
     if (state == AppLifecycleState.resumed) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: const Text('Welcome Back'),
-            duration: const Duration(milliseconds: 1500)
+            content: const Text(
+              'Welcome Back',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontFamily: 'Times New Roman'
+              )
+            ),
+            duration: const Duration(milliseconds: 1500),
+            backgroundColor: Color.fromARGB(255, 0, 80, 255),
           ),
         );
     }

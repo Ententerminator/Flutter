@@ -88,7 +88,7 @@ class _GpsDataState extends State<GpsData> {
           Text('Longitude is ${_longitude}'),
         ]),
       ),
-      endDrawer: MyDrawer(),
+      endDrawer: MyDrawer('GpsData'),
     );
   }
 }

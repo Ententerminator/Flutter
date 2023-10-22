@@ -54,7 +54,7 @@ class _AccelerometerState extends State<Accelerometer> {
           Text(' z is ' + z.toString()),
         ]),
       ),
-      endDrawer: MyDrawer(),
+      endDrawer: MyDrawer('Accelerometer'),
     );
   }
 }

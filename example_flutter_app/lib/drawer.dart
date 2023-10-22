@@ -10,85 +10,103 @@ import 'home_page.dart';
 import 'retrieve_data.dart';
 
 class MyDrawer extends StatelessWidget {
+  String name;
+  MyDrawer(this.name){print(name);}
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          //TODO: entfernen, aber genug platz trotzdem lassen (wie in react native?)
-          DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.blue,
+      backgroundColor: Color.fromARGB(255, 238, 238, 238),
+      child: SafeArea(  
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            ListTile(
+              trailing: const Icon(Icons.home),
+              title: const Text('MyHomePage'),
+              selected: name == 'MyHomePage',
+              selectedColor: Theme.of(context).colorScheme.primary,
+              //selectedTileColor: Theme.of(context).colorScheme.secondary,
+              onTap: () {
+                CurrentPage.setPage('MyHomePage');
+                Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => MyHomePage()));
+              },
             ),
-            child: Text('Ihre Werbung könnte hier stehen'),
-          ),
-          ListTile(
-            title: const Text('MyHomePage'),
-            selected: runtimeType.toString() == 'MyHomePage',
-            onTap: () {
-              CurrentPage.setPage('MyHomePage');
-              Navigator.pop(context);
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => MyHomePage()));
-            },
-          ),
-          ListTile(
-            title: const Text('Accelerometer'),
-            onTap: () {
-              CurrentPage.setPage('Accelerometer');
-              Navigator.pop(context);
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Accelerometer()));
-            },
-          ),
-          ListTile(
-            title: const Text('Camera'),
-            onTap: () {
-              CurrentPage.setPage('Camera');
-              Navigator.pop(context);
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Camera()));
-            },
-          ),
-          ListTile(
-            title: const Text('Contacts'),
-            onTap: () {
-              CurrentPage.setPage('Contacts');
-              Navigator.pop(context);
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Contacts()));
-            },
-          ),
-          ListTile(
-            title: const Text('FileAccess'),
-            onTap: () {
-              CurrentPage.setPage('FileAccess');
-              Navigator.pop(context);
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => FileAccess()));
-            },
-          ),
-          ListTile(
-            title: const Text('GpsData'),
-            onTap: () {
-              CurrentPage.setPage('GpsData');
-              Navigator.pop(context);
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => GpsData()));
-            },
-          ),
-          ListTile(
-            title: const Text('RetrieveData'),
-            onTap: () {
-              CurrentPage.setPage('RetrieveData');
-              Navigator.pop(context);
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => RetrieveData()));
-            },
-          ),
-        ],
-      ),
+            ListTile(
+              title: const Text('Accelerometer'),
+              selected: name == 'Accelerometer',
+              selectedColor: Theme.of(context).colorScheme.primary,
+              onTap: () {
+                CurrentPage.setPage('Accelerometer');
+                Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Accelerometer()));
+              },
+            ),
+            ListTile(
+              trailing: const Icon(Icons.photo_camera),
+              title: const Text('Camera'),
+              selected: name == 'Camera',
+              selectedColor: Theme.of(context).colorScheme.primary,
+              onTap: () {
+                CurrentPage.setPage('Camera');
+                Navigator.pop(context);
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Camera()));
+              },
+            ),
+            ListTile(
+              trailing: const Icon(Icons.group),
+              title: const Text('Contacts'),
+              selected: name == 'Contacts',
+              selectedColor: Theme.of(context).colorScheme.primary,
+              onTap: () {
+                CurrentPage.setPage('Contacts');
+                Navigator.pop(context);
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Contacts()));
+              },
+            ),
+            ListTile(
+              trailing: const Icon(Icons.folder),
+              title: const Text('FileAccess'),
+              selected: name == 'FileAccess',
+              selectedColor: Theme.of(context).colorScheme.primary,
+              onTap: () {
+                CurrentPage.setPage('FileAccess');
+                Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => FileAccess()));
+              },
+            ),
+            ListTile(
+              trailing: const Icon(Icons.gps_fixed),
+              title: const Text('GpsData'),
+              selected: name == 'GpsData',
+              selectedColor: Theme.of(context).colorScheme.primary,
+              onTap: () {
+                CurrentPage.setPage('GpsData');
+                Navigator.pop(context);
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => GpsData()));
+              },
+            ),
+            ListTile(
+              title: const Text('RetrieveData'),
+              selected: name == 'RetrieveData',
+              selectedColor: Theme.of(context).colorScheme.primary,
+              onTap: () {
+                CurrentPage.setPage('RetrieveData');
+                Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => RetrieveData()));
+              },
+            ),
+          ],
+        ),
+      )
     );
   }
 }

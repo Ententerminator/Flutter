@@ -80,7 +80,7 @@ class _RetrieveDataState extends State<RetrieveData> {
           ),
         )
       ),
-      endDrawer: MyDrawer(),
+      endDrawer: MyDrawer('RetrieveData'),
     );
   }
 }

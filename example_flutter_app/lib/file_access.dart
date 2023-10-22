@@ -89,7 +89,7 @@ class _FileAccessState extends State<FileAccess> {
           ]
         )
       ),
-      endDrawer: MyDrawer(),
+      endDrawer: MyDrawer('FileAccess'),
     );
   }
 }

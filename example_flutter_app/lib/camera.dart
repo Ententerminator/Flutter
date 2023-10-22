@@ -81,12 +81,12 @@ class _CameraState extends State<Camera> {
             },
             child: const Icon(Icons.camera_alt),
           ),
-          endDrawer: MyDrawer(),
+          endDrawer: MyDrawer('Camera'),
         )
         : Scaffold(
           appBar: MyAppbar('Camera'),
           body: Center(child: CircularProgressIndicator()),
-          endDrawer: MyDrawer(),
+          endDrawer: MyDrawer('Camera'),
         );
   }
 }

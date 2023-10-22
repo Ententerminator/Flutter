@@ -9,9 +9,6 @@ import 'file_access.dart';
 import 'gps_data.dart';
 import 'retrieve_data.dart';
 
-//entweder 3 rows 1 column
-//oder buttons padding rundherum geben
-
 class HomepageButton extends StatelessWidget{
   String text;
   Widget page;
@@ -30,8 +27,7 @@ class HomepageButton extends StatelessWidget{
             MaterialPageRoute(builder: (context) => this.page));
       },
       style: ElevatedButton.styleFrom(
-        minimumSize: Size(150, 90),
-        //padding: EdgeInsets.symmetric(vertical: 100)
+        minimumSize: Size(160, 90),
       )
     );
   }
@@ -47,7 +43,6 @@ class MyHomePage extends StatelessWidget {
         centerTitle: true,
       ),
       body: Column(
-        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           SizedBox( height: 30,),
           Row(
@@ -55,9 +50,7 @@ class MyHomePage extends StatelessWidget {
             
             children: <Widget>[
               HomepageButton('Accelerometer', Accelerometer()),
-              HomepageButton('Camera', Camera()),
-              //Padding(padding: EdgeInsets.fromLTRB(20, 120, 20, 0))
-              
+              HomepageButton('Camera', Camera()),              
             ],
           ),
           SizedBox( height: 30,),
@@ -66,7 +59,6 @@ class MyHomePage extends StatelessWidget {
             children: <Widget>[
               HomepageButton('Contacts', Contacts()),
               HomepageButton('FileAccess', FileAccess()),
-              //Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 0))
             ],
           ),
           SizedBox( height: 30,),
@@ -79,7 +71,7 @@ class MyHomePage extends StatelessWidget {
           ),
         ],
       ),
-      endDrawer: MyDrawer(),
+      endDrawer: MyDrawer(this.runtimeType.toString()),
     );
   }
 }

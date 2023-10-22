@@ -74,7 +74,7 @@ class _ContactsState extends State<Contacts> {
           ]
         ),
       ),
-      endDrawer: MyDrawer(),
+      endDrawer: MyDrawer('Contacts'),
     );
   }
 }
