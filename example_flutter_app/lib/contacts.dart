@@ -47,28 +47,37 @@ class _ContactsState extends State<Contacts> {
       body: Center(
         child: Column( 
           children:[
+            SizedBox( height: 20),
             ElevatedButton( 
               onPressed: _pickContact, //referenz wird weitergegeben, damit ers selber später callen kann
               child: Text( 
-                'Pick Contacts', 
+                'Pick Contact', 
               )
             ),
+            SizedBox( height: 20),
             ElevatedButton( 
+              style: ElevatedButton.styleFrom(alignment: Alignment.center),
               onPressed: contact != null ? _viewContact : null, 
               child: Text( 
-                'View Contact ${contact?.name.first??''} ${contact?.name.last??''}',
+                'View Contact \n${contact?.name.first??''} ${contact?.name.last??''}',
               )
             ),
+            SizedBox( height: 20),
             ElevatedButton( 
               onPressed: _insertContact, 
-              child: Text( 
-                'Make new Friend',
-              )
+              child: Text('New Contact')
             ),
-            ElevatedButton( 
+            SizedBox( height: 20),
+            ElevatedButton.icon( 
+              icon: Icon(
+                Icons.delete
+              ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 245, 65, 52)
+              ),
               onPressed: contact != null ? _deleteContact : null, 
-              child: Text( 
-                'Delete Friend ${contact?.name.first??''} ${contact?.name.last??''}',
+              label: Text( 
+                'Delete Contact ${contact?.name.first??''} ${contact?.name.last??''}',
               )
             ),
           ]

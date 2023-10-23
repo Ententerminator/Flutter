@@ -26,11 +26,13 @@ class MyApp extends StatelessWidget {
         )),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
-            minimumSize: MaterialStateProperty.all(Size(250, 60))
+            minimumSize: MaterialStateProperty.all(Size(250, 60)),
+            maximumSize: MaterialStateProperty.all(Size(250, 120)), //damit der Text nicht zu lang wird auf den Contact Buttons
+            textStyle: MaterialStatePropertyAll(TextStyle(fontSize: 18))
           )
         ),
         //navigationDrawerTheme: NavigationDrawerThemeData( labelTextStyle: ),
-        primaryColor: Color.fromARGB(255, 0, 80, 255),
+        primaryColor: Color.fromARGB(255, 0, 80, 255), //useless. ?
         scaffoldBackgroundColor: Color.fromARGB(255, 238, 238, 238),
         colorScheme: ColorScheme.fromSeed(
           seedColor: Color.fromARGB(0, 0, 0, 0),
