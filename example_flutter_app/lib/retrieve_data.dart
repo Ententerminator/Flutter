@@ -63,22 +63,35 @@ class _RetrieveDataState extends State<RetrieveData> {
       appBar: MyAppbar('RetrieveData'),
       body: RefreshIndicator(
         onRefresh: refreshData,
-        child: Center(
-          child: SingleChildScrollView(
-            physics: const AlwaysScrollableScrollPhysics(),
-            child: FutureBuilder<Album>(
-              future: futureAlbum,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return Image.network(snapshot.data!.message);
-                } else if (snapshot.hasError) {
-                  return Text("${snapshot.error}");
-                }
-                return CircularProgressIndicator();
-              },
-            ),
-          ),
-        )
+        child: LayoutBuilder( //damit man überall scrollen kann
+          builder: (BuildContext context, BoxConstraints viewportConstraints) {
+            return SingleChildScrollView(
+              physics: const AlwaysScrollableScrollPhysics(),
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  minHeight: viewportConstraints.maxHeight,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    FutureBuilder<Album>(
+                      future: futureAlbum,
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          return Image.network(snapshot.data!.message, width: 400, height: 500,);
+                        } else if (snapshot.hasError) {
+                          return Text("${snapshot.error}");
+                        }
+                        return CircularProgressIndicator();
+                      },
+                    )
+                  ]
+                )
+              )
+            );
+          }
+        ),
       ),
       endDrawer: MyDrawer('RetrieveData'),
     );

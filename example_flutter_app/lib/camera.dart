@@ -60,28 +60,43 @@ class _CameraState extends State<Camera> {
     return cameraAvailable
         ? Scaffold(
           appBar: MyAppbar('Camera'),
-          body: CameraPreview(_controller),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () async {
-              final XFile xImage = await _controller.takePicture();
-              if (!mounted) {
-                return;
-              }
-              final result = await ImageGallerySaver.saveImage(await xImage.readAsBytes());
-            // If the picture was taken, display it on a new screen.
-            await Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => DisplayPictureScreen(
-                  // Pass the automatically generated path to
-                  // the DisplayPictureScreen widget.
-                  imagePath: xImage.path,
-                ),
+          body: 
+            Column(  
+              children:[
+                Container(
+                  height: 30, 
+                  width: double.infinity,
+                  color: Theme.of(context).colorScheme.primary,
+                  alignment: Alignment.center,
+                  child: Text(
+                    'Take a Picture! :)', 
+                    style: TextStyle(
+                      color: Colors.white
+                    ),)),
+                CameraPreview(_controller),
+              ]
               ),
-            );
-            },
-            child: const Icon(Icons.camera_alt),
-          ),
-          endDrawer: MyDrawer('Camera'),
+            floatingActionButton: FloatingActionButton(
+              onPressed: () async {
+                    final XFile xImage = await _controller.takePicture();
+                    if (!mounted) {
+                      return;
+                    }
+                    final result = await ImageGallerySaver.saveImage(await xImage.readAsBytes());
+                  // If the picture was taken, display it on a new screen.
+                    await Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => DisplayPictureScreen(
+                          // Pass the automatically generated path to
+                          // the DisplayPictureScreen widget.
+                          imagePath: xImage.path,
+                        ),
+                      ),
+                    );
+                  },
+                  child: const Icon(Icons.camera_alt),
+                ),
+            endDrawer: MyDrawer('Camera'),
         )
         : Scaffold(
           appBar: MyAppbar('Camera'),

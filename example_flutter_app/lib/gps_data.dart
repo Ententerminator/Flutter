@@ -86,16 +86,16 @@ class _GpsDataState extends State<GpsData> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
           const Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              SizedBox(height: 100),
               Text('Latitude: '),
               SizedBox(height: 20),
               Text('Longitude: ')
               ],
           ),
           Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              SizedBox(height: 100),
               Text(_latitude),
               SizedBox(height: 20),
               Text(_longitude)
