@@ -47,11 +47,30 @@ class _AccelerometerState extends State<Accelerometer> {
     return Scaffold(
       appBar: MyAppbar('Accelerometer'),
       body: Center(
-        child: Column(children: [
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
           //prettify: x is in eigene column, damits nicht flackert
-          Text(' x is ' + x.toString()),
-          Text(' y is ' + y.toString()),
-          Text(' z is ' + z.toString()),
+          const Column(
+            children: [
+              SizedBox(height: 100),
+              Text(' x Axis: '),  //wischen richtung
+              SizedBox(height: 20),
+              Text(' y Axis: '), //stabbing richtung
+              SizedBox(height: 20),
+              Text(' z Axis: ') //rauf runter
+            ],
+          ),
+          Column(
+            children: [
+              SizedBox(height: 100),
+              Text(x.toStringAsFixed(5)),
+              SizedBox(height: 20),
+              Text(y.toStringAsFixed(5)),
+              SizedBox(height: 20),
+              Text(z.toStringAsFixed(5))
+            ],
+          )
         ]),
       ),
       endDrawer: MyDrawer('Accelerometer'),

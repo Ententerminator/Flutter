@@ -19,10 +19,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Times New Roman',
         textTheme: TextTheme(
+          //für accel und gpsdata
+          bodyMedium: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+        ),
           //for the drawer
           bodyLarge: TextStyle(
             fontSize: 15,
-            fontFamily: 'Arial'
         )),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(

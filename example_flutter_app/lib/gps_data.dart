@@ -82,10 +82,25 @@ class _GpsDataState extends State<GpsData> {
     return Scaffold(
       appBar: MyAppbar('GpsData'),
       body: Center(
-        child: Column(children: [
-          //prettify: long/lat in eigene column, damits nicht flackert
-          Text('Latitude is ${_latitude}'),
-          Text('Longitude is ${_longitude}'),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+          const Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Latitude: '),
+              SizedBox(height: 20),
+              Text('Longitude: ')
+              ],
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(_latitude),
+              SizedBox(height: 20),
+              Text(_longitude)
+              ],
+          ),
         ]),
       ),
       endDrawer: MyDrawer('GpsData'),
