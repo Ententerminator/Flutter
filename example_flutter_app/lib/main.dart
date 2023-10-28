@@ -32,7 +32,12 @@ class MyApp extends StatelessWidget {
           style: ButtonStyle(
             minimumSize: MaterialStateProperty.all(Size(250, 60)),
             maximumSize: MaterialStateProperty.all(Size(250, 120)), //damit der Text nicht zu lang wird auf den Contact Buttons
-            textStyle: MaterialStatePropertyAll(TextStyle(fontSize: 18))
+            textStyle: MaterialStatePropertyAll(
+              TextStyle(
+                fontSize: 18, 
+                fontFamily: 'Times New Roman'
+              )
+            )
           )
         ),
         //navigationDrawerTheme: NavigationDrawerThemeData( labelTextStyle: ),
