@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'accelerometer.dart';
@@ -10,7 +12,7 @@ import 'home_page.dart';
 import 'retrieve_data.dart';
 
 class MyDrawer extends StatelessWidget {
-  String name;
+  final String name;
   MyDrawer(this.name){print(name);}
 
   @override
@@ -26,12 +28,11 @@ class MyDrawer extends StatelessWidget {
               title: const Text('MyHomePage'),
               selected: name == 'MyHomePage',
               selectedColor: Theme.of(context).colorScheme.primary,
-              //selectedTileColor: Theme.of(context).colorScheme.secondary,
               onTap: () {
-                CurrentPage.setPage('MyHomePage');
+                unawaited(CurrentPage.setPage('MyHomePage'));
                 Navigator.pop(context);
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => MyHomePage()));
+                unawaited(Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => MyHomePage())));
               },
             ),
             ListTile(
@@ -39,10 +40,10 @@ class MyDrawer extends StatelessWidget {
               selected: name == 'Accelerometer',
               selectedColor: Theme.of(context).colorScheme.primary,
               onTap: () {
-                CurrentPage.setPage('Accelerometer');
+                unawaited(CurrentPage.setPage('Accelerometer'));
                 Navigator.pop(context);
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Accelerometer()));
+                unawaited(Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Accelerometer())));
               },
             ),
             ListTile(
@@ -51,10 +52,10 @@ class MyDrawer extends StatelessWidget {
               selected: name == 'Camera',
               selectedColor: Theme.of(context).colorScheme.primary,
               onTap: () {
-                CurrentPage.setPage('Camera');
+                unawaited(CurrentPage.setPage('Camera'));
                 Navigator.pop(context);
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Camera()));
+                unawaited(Navigator.push(context, 
+                    MaterialPageRoute(builder: (context) => Camera())));
               },
             ),
             ListTile(
@@ -63,10 +64,10 @@ class MyDrawer extends StatelessWidget {
               selected: name == 'Contacts',
               selectedColor: Theme.of(context).colorScheme.primary,
               onTap: () {
-                CurrentPage.setPage('Contacts');
+                unawaited(CurrentPage.setPage('Contacts'));
                 Navigator.pop(context);
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Contacts()));
+                unawaited(Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Contacts())));
               },
             ),
             ListTile(
@@ -75,10 +76,10 @@ class MyDrawer extends StatelessWidget {
               selected: name == 'FileAccess',
               selectedColor: Theme.of(context).colorScheme.primary,
               onTap: () {
-                CurrentPage.setPage('FileAccess');
+                unawaited(CurrentPage.setPage('FileAccess'));
                 Navigator.pop(context);
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => FileAccess()));
+                unawaited(Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => FileAccess())));
               },
             ),
             ListTile(
@@ -87,10 +88,10 @@ class MyDrawer extends StatelessWidget {
               selected: name == 'GpsData',
               selectedColor: Theme.of(context).colorScheme.primary,
               onTap: () {
-                CurrentPage.setPage('GpsData');
+                unawaited(CurrentPage.setPage('GpsData'));
                 Navigator.pop(context);
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => GpsData()));
+                unawaited(Navigator.push(context, 
+                    MaterialPageRoute(builder: (context) => GpsData())));
               },
             ),
             ListTile(
@@ -98,10 +99,10 @@ class MyDrawer extends StatelessWidget {
               selected: name == 'RetrieveData',
               selectedColor: Theme.of(context).colorScheme.primary,
               onTap: () {
-                CurrentPage.setPage('RetrieveData');
+                unawaited(CurrentPage.setPage('RetrieveData'));
                 Navigator.pop(context);
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => RetrieveData()));
+                unawaited(Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => RetrieveData())));
               },
             ),
           ],

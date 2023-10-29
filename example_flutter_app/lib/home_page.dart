@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:example_flutter_app/current_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,25 +12,23 @@ import 'gps_data.dart';
 import 'retrieve_data.dart';
 
 class HomepageButton extends StatelessWidget{
-  String text;
-  Widget page;
+  final String text;
+  final Widget page;
   HomepageButton( this.text, this.page);
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
+      onPressed: () {
+        unawaited(HapticFeedback.vibrate());
+        unawaited(CurrentPage.setPage(this.text));
+        unawaited(Navigator.push(context,
+            MaterialPageRoute(builder: (context) => this.page)));
+      },
+      style: ElevatedButton.styleFrom(minimumSize: Size(160, 90)),
       child: Text(
         this.text,
-        style: TextStyle(fontSize: 18),),
-      onPressed: () {
-        HapticFeedback.vibrate();
-        CurrentPage.setPage(this.text);
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => this.page));
-      },
-      style: ElevatedButton.styleFrom(
-        minimumSize: Size(160, 90),
-      )
+        style: TextStyle(fontSize: 18))
     );
   }
 }
@@ -44,16 +44,15 @@ class MyHomePage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          SizedBox( height: 30,),
+          SizedBox( height: 30),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            
             children: <Widget>[
               HomepageButton('Accelerometer', Accelerometer()),
               HomepageButton('Camera', Camera()),              
             ],
           ),
-          SizedBox( height: 30,),
+          SizedBox( height: 30),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[

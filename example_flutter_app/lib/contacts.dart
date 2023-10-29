@@ -50,9 +50,7 @@ class _ContactsState extends State<Contacts> {
             SizedBox( height: 20),
             ElevatedButton( 
               onPressed: _pickContact, //referenz wird weitergegeben, damit ers selber später callen kann
-              child: Text( 
-                'Pick Contact', 
-              )
+              child: Text('Pick Contact')
             ),
             SizedBox( height: 20),
             ElevatedButton( 
@@ -69,9 +67,7 @@ class _ContactsState extends State<Contacts> {
             ),
             SizedBox( height: 20),
             ElevatedButton.icon( 
-              icon: Icon(
-                Icons.delete
-              ),
+              icon: Icon(Icons.delete),
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromARGB(255, 245, 65, 52)
               ),

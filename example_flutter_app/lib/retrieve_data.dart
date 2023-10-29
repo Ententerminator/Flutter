@@ -1,8 +1,6 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-
 import 'appbar.dart';
 import 'drawer.dart';
 
@@ -11,12 +9,8 @@ Future<Album> fetchAlbum() async {
       await http.get(Uri.parse('https://dog.ceo/api/breeds/image/random'));
 
   if (response.statusCode == 200) {
-    // If the server did return a 200 OK response,
-    // then parse the JSON.
     return Album.fromJson(jsonDecode(response.body));
   } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
     throw Exception('Failed to load album');
   }
 }
@@ -24,11 +18,7 @@ Future<Album> fetchAlbum() async {
 class Album {
   final String message;
   final String status;
-
-  const Album({
-    required this.message,
-    required this.status,
-  });
+  const Album({required this.message, required this.status});
 
   factory Album.fromJson(Map<String, dynamic> json) {
     return Album(
@@ -79,9 +69,14 @@ class _RetrieveDataState extends State<RetrieveData> {
                       future: futureAlbum,
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {
-                          return Image.network(snapshot.data!.message, width: 400, height: 500,);
+                          return Image.network(
+                            snapshot.data!.message, 
+                            width: 400, 
+                            height: 500
+                            );
                         } else if (snapshot.hasError) {
-                          return Text("${snapshot.error}");
+                          return Text(
+                            "${snapshot.error}");
                         }
                         return CircularProgressIndicator();
                       },

@@ -6,28 +6,24 @@ import 'package:example_flutter_app/file_access.dart';
 import 'package:example_flutter_app/gps_data.dart';
 import 'package:example_flutter_app/retrieve_data.dart';
 import 'package:flutter/material.dart';
-
 import 'home_page.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MyApp());                 //wird gezählt
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
+class MyApp extends StatelessWidget {           //wird gezählt
+  @override                                     //wird gezählt
+  Widget build(BuildContext context) {          //wird gezählt
     return MaterialApp(
       home: SavedPage(),
       theme: ThemeData(
         fontFamily: 'Times New Roman',
-        textTheme: TextTheme(
-          //für accel und gpsdata
+        textTheme: TextTheme(                   //für accel und gpsdata
           bodyMedium: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
         ),
-          //for the drawer
-          bodyLarge: TextStyle(
-            fontSize: 15,
-        )),
+          bodyLarge: TextStyle(fontSize: 15)  //drawer
+        ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
             minimumSize: MaterialStateProperty.all(Size(250, 60)),
@@ -40,20 +36,18 @@ class MyApp extends StatelessWidget {
             )
           )
         ),
-        //navigationDrawerTheme: NavigationDrawerThemeData( labelTextStyle: ),
-        primaryColor: Color.fromARGB(255, 0, 80, 255), //useless. ?
         scaffoldBackgroundColor: Color.fromARGB(255, 238, 238, 238),
         colorScheme: ColorScheme.fromSeed(
           seedColor: Color.fromARGB(0, 0, 0, 0),
           primary: Color.fromARGB(255, 0, 80, 255),
-          secondary: Color.fromARGB(50, 0, 81, 255)
+          secondary: Color.fromARGB(50, 0, 80, 255)   //nur camera button
         )
       )
     );
   }
 }
 
-class SavedPage extends StatefulWidget {
+class SavedPage extends StatefulWidget {    //3 zeilen
   @override
   State<SavedPage> createState() => SavedPageState();
 }
@@ -88,9 +82,7 @@ class SavedPageState extends State<SavedPage> with WidgetsBindingObserver{
             content: const Text(
               'Welcome Back',
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontFamily: 'Times New Roman'
-              )
+              style: TextStyle(fontFamily: 'Times New Roman')
             ),
             duration: const Duration(milliseconds: 1500),
             backgroundColor: Color.fromARGB(255, 0, 80, 255),
